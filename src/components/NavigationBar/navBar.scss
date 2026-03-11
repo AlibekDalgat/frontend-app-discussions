@@ -1,0 +1,40 @@
+.course-tabs-navigation {
+  border-bottom: solid 1px #eaeaea;
+
+  .nav a,
+  .nav button {
+    &:hover {
+      background-color: var(--pgn-color-light-400);
+    }
+  }
+
+  .nav a {
+    &:not(.active):hover {
+      background-color: var(--pgn-color-light-400);
+      border-bottom: none;
+    }
+  }
+}
+
+.nav-underline-tabs {
+  margin: 0 0 -1px;
+
+  .nav-link {
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid transparent;
+    color: var(--pgn-color-gray-700);
+
+    // temporary until we can remove .btn class from dropdowns
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+
+    &:hover,
+    &:focus,
+    &.active {
+      font-weight: var(--pgn-typography-font-weight-normal);
+      color: var(--pgn-color-primary-500);
+      border-bottom-color: var(--pgn-color-primary-500);
+    }
+  }
+}
