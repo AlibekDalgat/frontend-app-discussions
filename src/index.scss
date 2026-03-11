@@ -4,6 +4,12 @@
 @import "~@edx/frontend-component-footer/dist/footer";
 @import "~@edx/frontend-component-header/dist/index";
 
+:root {
+  --pgn-color-primary-500: var(--primary, #2F2F60);
+  --pgn-color-btn-bg-primary: var(--primary, #2F2F60);
+  --pgn-color-primary-base: var(--primary, #2F2F60);
+}
+
 
 body,
 #main
@@ -698,5 +704,23 @@ th, td {
   body,
   #main {
     font-size: 10px;
+  }
+}
+
+.app-header-fixed {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.app-footer {
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .app-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 1000;
   }
 }

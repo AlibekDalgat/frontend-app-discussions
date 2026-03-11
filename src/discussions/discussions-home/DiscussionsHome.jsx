@@ -8,7 +8,7 @@ import {
   matchPath, Route, Routes, useLocation, useMatch,
 } from 'react-router-dom';
 
-import { LearningHeader as Header } from '@edx/frontend-component-header';
+import { LearningHeader as Header } from '../../components/LearningHeader';
 
 import { Spinner } from '../../components';
 import selectCourseTabs from '../../components/NavigationBar/data/selectors';
@@ -27,7 +27,7 @@ import { selectPostEditorVisible } from '../posts/data/selectors';
 import { isCourseStatusValid } from '../utils';
 import useFeedbackWrapper from './FeedbackWrapper';
 
-const FooterSlot = lazy(() => import('@edx/frontend-component-footer').then(module => ({ default: module.FooterSlot })));
+const CustomFooter = lazy(() => import('../../components/CustomFooter'));
 const PostActionsBar = lazy(() => import('../posts/post-actions-bar/PostActionsBar'));
 const CourseTabsNavigation = lazy(() => import('../../components/NavigationBar/CourseTabsNavigation'));
 const LegacyBreadcrumbMenu = lazy(() => import('../navigation/breadcrumb-menu/LegacyBreadcrumbMenu'));
@@ -84,10 +84,9 @@ const DiscussionsHome = () => {
     <Suspense fallback={(<Spinner />)}>
       <DiscussionContext.Provider value={discussionContextValue}>
         {!enableInContextSidebar && (
-        <>
-          <DiscussionsConfirmEmailBanner />
-          <Header courseOrg={org} courseNumber={courseNumber} courseTitle={courseTitle} />
-        </>
+          <div className="app-header-fixed">
+            <Header />
+          </div>
         )}
         <main className="container-fluid d-flex flex-column p-0 w-100 font-size" id="main" tabIndex="-1">
           {!enableInContextSidebar && <CourseTabsNavigation />}
@@ -182,7 +181,11 @@ const DiscussionsHome = () => {
           )}
           {!enableInContextSidebar && isEnrolled && (<DiscussionsProductTour />)}
         </main>
-        {!enableInContextSidebar && <FooterSlot />}
+        {!enableInContextSidebar &&
+          <div className="app-footer">
+            <CustomFooter />
+          </div>
+        }
       </DiscussionContext.Provider>
     </Suspense>
   );
