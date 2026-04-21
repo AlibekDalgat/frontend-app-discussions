@@ -11,6 +11,11 @@ const messages = defineMessages({
     defaultMessage: 'Каталог обучения',
     description: 'Ссылка на каталог курсов в основном меню хедера',
   },
+  aiAssis: {
+    id: 'courseExit.ai-assistant',
+    defaultMessage: 'ИИ-ассистент',
+    description: 'Ссылка на страницу чатов с ИИ-ассистентом',
+  },
   ratings: {
     id: 'courseExit.header.ratings',
     defaultMessage: 'Рейтинги',

@@ -23,11 +23,17 @@ const getLearningHeaderMenu = (
     href: courseSearchUrl.startsWith('http') ? courseSearchUrl : `${getConfig().LMS_BASE_URL}${courseSearchUrl}`,
     content: formatMessage(messages.catalog),
   },
-    {
-      type: 'item',
-      href: `${getConfig().ACCOUNT_PROFILE_URL}/ratings`,
-      content: formatMessage(messages.ratings),
-    },
+  ...(getConfig().ENABLE_AI_ASSISTANT_WIDGET ? [{
+    type: 'item',
+    href: `${getConfig().LEARNER_HOME_BASE_URL}ai-assistant`,
+    content: formatMessage(messages.aiAssis),
+    isActive: window.location.pathname.includes('/ai-assistant'),
+  }] : []),
+  {
+    type: 'item',
+    href: `${getConfig().ACCOUNT_PROFILE_URL}/ratings`,
+    content: formatMessage(messages.ratings),
+  },
 ],
 
 userMenu: authenticatedUser ? [
